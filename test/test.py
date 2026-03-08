@@ -8,33 +8,59 @@ from cocotb.triggers import ClockCycles
 
 @cocotb.test()
 async def test_project(dut):
-    dut._log.info("Start")
 
-    # Set the clock period to 10 us (100 KHz)
+    dut._log.info("Start test")
+
     clock = Clock(dut.clk, 10, unit="us")
     cocotb.start_soon(clock.start())
 
     # Reset
-    dut._log.info("Reset")
     dut.ena.value = 1
     dut.ui_in.value = 0
     dut.uio_in.value = 0
     dut.rst_n.value = 0
-    await ClockCycles(dut.clk, 10)
+
+    await ClockCycles(dut.clk, 5)
+
     dut.rst_n.value = 1
 
-    dut._log.info("Test project behavior")
+    # -------- Test Case 1 --------
+    A = 3
+    B = 2
 
-    # Set the input values you want to test
-    dut.ui_in.value = 20
-    dut.uio_in.value = 30
+    dut.ui_in.value = (B << 4) | A
 
-    # Wait for one clock cycle to see the output values
     await ClockCycles(dut.clk, 1)
 
-    # The following assersion is just an example of how to check the output values.
-    # Change it to match the actual expected output of your module:
-    assert dut.uo_out.value == 50
+    expected = A * B
+    dut._log.info(f"A={A} B={B} Expected={expected} Output={dut.uo_out.value}")
 
-    # Keep testing the module by changing the input values, waiting for
-    # one or more clock cycles, and asserting the expected output values.
+    assert dut.uo_out.value == expected
+
+
+    # -------- Test Case 2 --------
+    A = 4
+    B = 5
+
+    dut.ui_in.value = (B << 4) | A
+
+    await ClockCycles(dut.clk, 1)
+
+    expected = A * B
+    dut._log.info(f"A={A} B={B} Expected={expected} Output={dut.uo_out.value}")
+
+    assert dut.uo_out.value == expected
+
+
+    # -------- Test Case 3 --------
+    A = 7
+    B = 3
+
+    dut.ui_in.value = (B << 4) | A
+
+    await ClockCycles(dut.clk, 1)
+
+    expected = A * B
+    dut._log.info(f"A={A} B={B} Expected={expected} Output={dut.uo_out.value}")
+
+    assert dut.uo_out.value == expected
