@@ -58,6 +58,14 @@ encoder e1(.in(a), .out(pe1), .valid(v1));
 encoder e2(.in(b), .out(pe2), .valid(v2));
 
 always @(*) begin
+
+ka = 0;
+kb = 0;
+k  = 0;
+Xa = 0;
+Xb = 0;
+s  = 0;
+OMUX = 0;
 if(a == 0 || b == 0)
 begin
     Xa = 0;
