@@ -72,6 +72,8 @@ begin
     Xb = 0;
     s = 0;
     k = 0;
+    ka=0;
+    kb=0;
 end
 else
 begin
