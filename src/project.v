@@ -17,7 +17,7 @@ module tt_um_sidharth6761_LP_multiplier4b (
     `ifdef USE_POWER_PINS
     inout  wire       VPWR,     // Power supply
     inout  wire       VGND      // Ground
-`endif
+    `endif
 );
 
 wire [3:0] a;
