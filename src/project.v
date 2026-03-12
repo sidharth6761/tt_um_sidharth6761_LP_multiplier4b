@@ -17,8 +17,6 @@ module tt_um_sidharth6761_LP_multiplier4b (
     input  wire       rst_n,
     inout  wire       VPWR,
     inout  wire       VGND
-`else
-    input  wire       rst_n
 `endif
 );
 
