@@ -15,7 +15,7 @@ module tt_um_sidharth6761_LP_multiplier4b (
     input  wire       clk,      // clock
     input  wire       rst_n,
     inout  wire       VPWR,
-    inout  wire       VGND
+   
 );
 
 wire [3:0] a;
