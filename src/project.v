@@ -14,10 +14,13 @@ module tt_um_sidharth6761_LP_multiplier4b (
     input  wire       ena,      // always 1 when the design is powered, so you can ignore it
     input  wire       clk,      // clock
     input  wire       rst_n,     // reset_n - low to reset
-    `ifdef USE_POWER_PINS
-    inout  wire       VPWR,     // Power supply
-    inout  wire       VGND      // Ground
-    `endif
+`ifdef USE_POWER_PINS
+    input  wire       rst_n,
+    inout  wire       VPWR,
+    inout  wire       VGND
+`else
+    input  wire       rst_n
+`endif
 );
 
 wire [3:0] a;
