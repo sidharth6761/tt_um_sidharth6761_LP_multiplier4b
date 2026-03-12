@@ -13,11 +13,9 @@ module tt_um_sidharth6761_LP_multiplier4b (
     output wire [7:0] uio_oe,   // IOs: Enable path (active high: 0=input, 1=output)
     input  wire       ena,      // always 1 when the design is powered, so you can ignore it
     input  wire       clk,      // clock
-`ifdef USE_POWER_PINS
     input  wire       rst_n,
     inout  wire       VPWR,
     inout  wire       VGND
-`endif
 );
 
 wire [3:0] a;
